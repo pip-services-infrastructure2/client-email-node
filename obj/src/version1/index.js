@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.EmailGrpcClientV1 = exports.EmailCommandableGrpcClientV1 = exports.EmailNullClientV1 = exports.EmailDirectClientV1 = exports.EmailLambdaClientV1 = exports.EmailHttpClientV1 = exports.EmailRecipientV1 = exports.EmailMessageV1 = void 0;
+var EmailMessageV1_1 = require("./EmailMessageV1");
+Object.defineProperty(exports, "EmailMessageV1", { enumerable: true, get: function () { return EmailMessageV1_1.EmailMessageV1; } });
+var EmailRecipientV1_1 = require("./EmailRecipientV1");
+Object.defineProperty(exports, "EmailRecipientV1", { enumerable: true, get: function () { return EmailRecipientV1_1.EmailRecipientV1; } });
+var EmailHttpClientV1_1 = require("./EmailHttpClientV1");
+Object.defineProperty(exports, "EmailHttpClientV1", { enumerable: true, get: function () { return EmailHttpClientV1_1.EmailHttpClientV1; } });
+var EmailLambdaClientV1_1 = require("./EmailLambdaClientV1");
+Object.defineProperty(exports, "EmailLambdaClientV1", { enumerable: true, get: function () { return EmailLambdaClientV1_1.EmailLambdaClientV1; } });
+var EmailDirectClientV1_1 = require("./EmailDirectClientV1");
+Object.defineProperty(exports, "EmailDirectClientV1", { enumerable: true, get: function () { return EmailDirectClientV1_1.EmailDirectClientV1; } });
+var EmailNullClientV1_1 = require("./EmailNullClientV1");
+Object.defineProperty(exports, "EmailNullClientV1", { enumerable: true, get: function () { return EmailNullClientV1_1.EmailNullClientV1; } });
+var EmailCommandableGrpcClientV1_1 = require("./EmailCommandableGrpcClientV1");
+Object.defineProperty(exports, "EmailCommandableGrpcClientV1", { enumerable: true, get: function () { return EmailCommandableGrpcClientV1_1.EmailCommandableGrpcClientV1; } });
+var EmailGrpcClientV1_1 = require("./EmailGrpcClientV1");
+Object.defineProperty(exports, "EmailGrpcClientV1", { enumerable: true, get: function () { return EmailGrpcClientV1_1.EmailGrpcClientV1; } });
+//# sourceMappingURL=index.js.map
