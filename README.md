@@ -1,4 +1,4 @@
-# Email Microservice Client SDK for Node.js / EX2017
+# Email Microservice Client SDK for Node.js / ES2017
 
 This is a Node.js client SDK for [service-email](https://github.com/pip-services-infrastructure2/service-email-node) microservice.
 It provides an easy to use abstraction over communication protocols:
