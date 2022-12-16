@@ -1,11 +1,11 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
-import { CommandableGrpcClient } from 'pip-services3-grpc-nodex';
+import { CommandableHttpClient } from 'pip-services3-rpc-nodex';
 
 import { EmailMessageV1 } from './EmailMessageV1';
 import { EmailRecipientV1 } from './EmailRecipientV1';
 import { IEmailClientV1 } from './IEmailClientV1';
 
-export class EmailCommandableGrpcClientV1 extends CommandableGrpcClient implements IEmailClientV1 {
+export class EmailCommandableHttpClientV1 extends CommandableHttpClient implements IEmailClientV1 {
     private _defaultParameters: ConfigParams;
 
     constructor(config?: any) {

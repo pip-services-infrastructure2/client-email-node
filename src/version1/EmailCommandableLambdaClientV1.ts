@@ -1,15 +1,15 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
-import { CommandableGrpcClient } from 'pip-services3-grpc-nodex';
+import { CommandableLambdaClient } from 'pip-services3-aws-nodex';
 
 import { EmailMessageV1 } from './EmailMessageV1';
 import { EmailRecipientV1 } from './EmailRecipientV1';
 import { IEmailClientV1 } from './IEmailClientV1';
 
-export class EmailCommandableGrpcClientV1 extends CommandableGrpcClient implements IEmailClientV1 {
+export class EmailCommandableLambdaClientV1 extends CommandableLambdaClient implements IEmailClientV1 {
     private _defaultParameters: ConfigParams;
 
     constructor(config?: any) {
-        super('v1/email');
+        super('email');
 
         let thisConfig = ConfigParams.fromValue(config);
         this._defaultParameters = thisConfig.getSection('parameters');
@@ -18,7 +18,7 @@ export class EmailCommandableGrpcClientV1 extends CommandableGrpcClient implemen
 
     public async sendMessage(correlationId: string, message: EmailMessageV1, parameters: ConfigParams): Promise<void> {
         parameters = this._defaultParameters.override(parameters);
-
+        
         await this.callCommand(
             'send_message',
             correlationId,
@@ -32,7 +32,7 @@ export class EmailCommandableGrpcClientV1 extends CommandableGrpcClient implemen
     public async sendMessageToRecipient(correlationId: string, recipient: EmailRecipientV1,
         message: EmailMessageV1, parameters: ConfigParams): Promise<void> {
         parameters = this._defaultParameters.override(parameters);
-
+        
         await this.callCommand(
             'send_message_to_recipient',
             correlationId,
@@ -47,7 +47,7 @@ export class EmailCommandableGrpcClientV1 extends CommandableGrpcClient implemen
     public async sendMessageToRecipients(correlationId: string, recipients: EmailRecipientV1[],
         message: EmailMessageV1, parameters: ConfigParams): Promise<void> {
         parameters = this._defaultParameters.override(parameters);
-        
+
         await this.callCommand(
             'send_message_to_recipients',
             correlationId,

@@ -27,11 +27,10 @@ export class EmailDirectClientV1 extends DirectClient<any> implements IEmailClie
 
         try {
             await this._controller.sendMessage(correlationId, message, parameters);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -42,11 +41,10 @@ export class EmailDirectClientV1 extends DirectClient<any> implements IEmailClie
         
         try {
             await this._controller.sendMessageToRecipient(correlationId, recipient, message, parameters);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -57,11 +55,10 @@ export class EmailDirectClientV1 extends DirectClient<any> implements IEmailClie
         
         try {
             await this._controller.sendMessageToRecipients(correlationId, recipients, message, parameters);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 

@@ -23,60 +23,30 @@ class EmailCommandableGrpcClientV1 extends pip_services3_grpc_nodex_1.Commandabl
     sendMessage(correlationId, message, parameters) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email.send_message');
-            try {
-                yield this.callCommand('send_message', correlationId, {
-                    message: message,
-                    parameters: parameters
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_message', correlationId, {
+                message: message,
+                parameters: parameters
+            });
         });
     }
     sendMessageToRecipient(correlationId, recipient, message, parameters) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email.send_message_to_recipient');
-            try {
-                yield this.callCommand('send_message_to_recipient', correlationId, {
-                    recipient: recipient,
-                    message: message,
-                    parameters: parameters
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_message_to_recipient', correlationId, {
+                recipient: recipient,
+                message: message,
+                parameters: parameters
+            });
         });
     }
     sendMessageToRecipients(correlationId, recipients, message, parameters) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email.send_message_to_recipients');
-            try {
-                yield this.callCommand('send_message_to_recipients', correlationId, {
-                    recipients: recipients,
-                    message: message,
-                    parameters: parameters
-                });
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
-            finally {
-                timing.endTiming();
-            }
+            yield this.callCommand('send_message_to_recipients', correlationId, {
+                recipients: recipients,
+                message: message,
+                parameters: parameters
+            });
         });
     }
 }

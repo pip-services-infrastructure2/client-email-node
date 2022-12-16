@@ -1,9 +1,9 @@
 import { ConfigParams } from 'pip-services3-commons-nodex';
 
 import { EmailClientFixtureV1 } from './EmailClientFixtureV1';
-import { EmailLambdaClientV1 } from '../../src/version1/EmailLambdaClientV1';
+import { EmailCommandableLambdaClientV1 } from '../../src/version1/EmailCommandableLambdaClientV1';
 
-suite('EmailLambdaClient', ()=> {
+suite('EmailLambdaCommandableClient', ()=> {
     let AWS_LAMDBA_ARN = process.env["AWS_LAMDBA_ARN"] || "";
     let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
@@ -18,11 +18,11 @@ suite('EmailLambdaClient', ()=> {
         'credential.access_key', AWS_ACCESS_KEY
     )
 
-    let client: EmailLambdaClientV1;
+    let client: EmailCommandableLambdaClientV1;
     let fixture: EmailClientFixtureV1;
 
     setup(async () => {
-        client = new EmailLambdaClientV1();
+        client = new EmailCommandableLambdaClientV1();
         client.configure(config);
 
         fixture = new EmailClientFixtureV1(client);

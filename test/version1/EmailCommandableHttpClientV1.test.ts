@@ -6,7 +6,7 @@ import { ConsoleLogger } from 'pip-services3-components-nodex';
 import { EmailController } from 'service-email-node';
 import { EmailHttpServiceV1 } from 'service-email-node';
 
-import { EmailHttpClientV1 } from '../../src/version1/EmailHttpClientV1';
+import { EmailCommandableHttpClientV1 } from '../../src/version1/EmailCommandableHttpClientV1';
 import { EmailClientFixtureV1 } from './EmailClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -15,9 +15,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('EmailHttpClientV1', ()=> {
+suite('EmailHttpCommandableClientV1', ()=> {
     let service: EmailHttpServiceV1;
-    let client: EmailHttpClientV1;
+    let client: EmailCommandableHttpClientV1;
     let fixture: EmailClientFixtureV1;
 
     suiteSetup(async () => {
@@ -33,12 +33,12 @@ suite('EmailHttpClientV1', ()=> {
         let references: References = References.fromTuples(
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('service-email', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-email', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-email', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new EmailHttpClientV1();
+        client = new EmailCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

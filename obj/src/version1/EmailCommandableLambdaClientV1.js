@@ -9,15 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EmailDirectClientV1 = void 0;
+exports.EmailCommandableLambdaClientV1 = void 0;
 const pip_services3_commons_nodex_1 = require("pip-services3-commons-nodex");
-const pip_services3_commons_nodex_2 = require("pip-services3-commons-nodex");
-const pip_services3_rpc_nodex_1 = require("pip-services3-rpc-nodex");
-//import { IEmailController } from 'service-email-node';
-class EmailDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
+const pip_services3_aws_nodex_1 = require("pip-services3-aws-nodex");
+class EmailCommandableLambdaClientV1 extends pip_services3_aws_nodex_1.CommandableLambdaClient {
     constructor(config) {
-        super();
-        this._dependencyResolver.put('controller', new pip_services3_commons_nodex_2.Descriptor("service-email", "controller", "*", "*", "*"));
+        super('email');
         let thisConfig = pip_services3_commons_nodex_1.ConfigParams.fromValue(config);
         this._defaultParameters = thisConfig.getSection('parameters');
         if (config != null)
@@ -26,45 +23,32 @@ class EmailDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient {
     sendMessage(correlationId, message, parameters) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email.send_message');
-            try {
-                yield this._controller.sendMessage(correlationId, message, parameters);
-                timing.endTiming();
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
+            yield this.callCommand('send_message', correlationId, {
+                message: message,
+                parameters: parameters
+            });
         });
     }
     sendMessageToRecipient(correlationId, recipient, message, parameters) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email.send_message_to_recipient');
-            try {
-                yield this._controller.sendMessageToRecipient(correlationId, recipient, message, parameters);
-                timing.endTiming();
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
+            yield this.callCommand('send_message_to_recipient', correlationId, {
+                recipient: recipient,
+                message: message,
+                parameters: parameters
+            });
         });
     }
     sendMessageToRecipients(correlationId, recipients, message, parameters) {
         return __awaiter(this, void 0, void 0, function* () {
             parameters = this._defaultParameters.override(parameters);
-            let timing = this.instrument(correlationId, 'email.send_message_to_recipients');
-            try {
-                yield this._controller.sendMessageToRecipients(correlationId, recipients, message, parameters);
-                timing.endTiming();
-            }
-            catch (err) {
-                timing.endFailure(err);
-                throw err;
-            }
+            yield this.callCommand('send_message_to_recipients', correlationId, {
+                recipients: recipients,
+                message: message,
+                parameters: parameters
+            });
         });
     }
 }
-exports.EmailDirectClientV1 = EmailDirectClientV1;
-//# sourceMappingURL=EmailDirectClientV1.js.map
+exports.EmailCommandableLambdaClientV1 = EmailCommandableLambdaClientV1;
+//# sourceMappingURL=EmailCommandableLambdaClientV1.js.map

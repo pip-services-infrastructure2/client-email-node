@@ -34,11 +34,10 @@ export class EmailGrpcClientV1 extends GrpcClient implements IEmailClientV1 {
 
             if (response.error != null)
                 throw EmailGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }       
     }
 
@@ -58,12 +57,11 @@ export class EmailGrpcClientV1 extends GrpcClient implements IEmailClientV1 {
 
             if (response.error != null)
                 throw EmailGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }              
+        }            
     }
 
     public async sendMessageToRecipients(correlationId: string, recipients: EmailRecipientV1[],
@@ -82,12 +80,11 @@ export class EmailGrpcClientV1 extends GrpcClient implements IEmailClientV1 {
 
             if (response.error != null)
                 throw EmailGrpcConverterV1.toError(response.error);
+            timing.endTiming();
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
-        }       
+        }     
     }
 
 }
